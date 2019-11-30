@@ -824,9 +824,9 @@ void multipcm_write_rom(UINT8 ChipID, offs_t ROMSize, offs_t DataStart, offs_t D
 			TempSmpl = &ptChip->Samples[CurSmpl];
 			ptSample = (UINT8*)ptChip->ROM + CurSmpl * 12;
 			
-			TempSmpl->Start = (ptSample[0]<<16)|(ptSample[1]<<8)|(ptSample[2]<<0);
-			TempSmpl->Loop = (ptSample[3]<<8)|(ptSample[4]<<0);
-			TempSmpl->End = 0xffff-((ptSample[5]<<8)|(ptSample[6]<<0));
+			TempSmpl->Start = (CurSmpl == GETSAMPLE ? (ptSample[0]<<16)|(ptSample[1]<<8)|(ptSample[2]<<0) : 0);
+			TempSmpl->Loop = (CurSmpl == GETSAMPLE ? (ptSample[3]<<8)|(ptSample[4]<<0) : 0);
+			TempSmpl->End = (CurSmpl == GETSAMPLE ? 0xffff-((ptSample[5]<<8)|(ptSample[6]<<0)) : 0);
 			TempSmpl->LFOVIB = ptSample[7];
 			TempSmpl->DR1 = ptSample[8]&0xf;
 			TempSmpl->AR = (ptSample[8]>>4)&0xf;

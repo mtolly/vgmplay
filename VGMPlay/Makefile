@@ -111,7 +111,7 @@ endif
 
 ifeq ($(DEBUG), 0)
 # -- General Compile Flags --
-CFLAGS := -O3 -g0 -Wno-unused-variable -Wno-unused-value -Wno-unused-but-set-variable $(CFLAGS)
+CFLAGS := -O3 -g0 -Wno-unused-variable -Wno-unused-value -Wno-unused-but-set-variable -DGETSAMPLE=$(GETSAMPLE) $(CFLAGS)
 else
 CFLAGS := -g -Wall $(CFLAGS)
 endif
